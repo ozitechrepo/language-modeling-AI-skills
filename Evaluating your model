@@ -1,0 +1,80 @@
+---Evaluating your model---
+.............................
+You have just trained your first language model, but how well do you think the model performed in generating text? You have already gained some experience with evaluation in the third lab when you compared the output of the n-gram model to the output of Gemma-1B. In this article, you will explore the evaluation process in a little more detail.
+
+
+You may want to keep a record of your evaluation in your notebook so that you can come back to it later. 
+Defining the goal for evaluation
+
+Before you are able to perform any evaluation, the most crucial step is to clearly define the goal of your system. Evaluation is generally not about chasing a high score on some specific metric or making sure that the loss is as low as possible. Instead, it is about determining if your model is good at the specific task you designed it for. Without a clear purpose, your evaluation will be meaningless. The success criteria for one model can be a total failure for another.
+
+
+For example, imagine again that you are developing a chatbot for answering questions about starting or running a small business in your local community. In this case, the primary goal of the chatbot will be to provide accurate, factual, reliable, and safe information. When a user asks, "What licenses do I need to sell custom-made furniture?," the answer must be correct and grounded in facts. A creative or "interesting" but wrong answer is not just unhelpful, it could be financially damaging.
+
+
+In a use case like this, your evaluation would want to center on truthfulness and helpfulness. You would measure things such as:
+
+
+    Factual accuracy: How often does the model's output align with a trusted knowledge base (e.g., government business portals, legal guides)? This is often measured through direct fact-checking.
+
+    Relevance: How often does the answer directly address the user's specific question?
+
+    Safety: Does the model avoid giving unlicensed legal or financial advice and instead guide users to consult professionals?
+
+Criteria for evaluating a small language model
+
+For a more general purpose language model, such as the one you have trained in the previous lab, the evaluation criteria may be a little more abstract. Given the small dataset that the model has been trained on and the focus on stories about African culture, nature, and geography, a reasonable evaluation would focus on aspects such as thematic and stylistic coherence, fluency, context sensitivity, and bias:
+
+
+    Fluency:  Does the model learn the vocabulary and sentence structure of English and does it generate grammatically correct sentences?
+
+    Thematic and stylistic coherence: Does the model learn something about the recurring themes in the dataset and is it able to generate coherent texts about these themes? For example, if the source texts frequently describe Ghanaian kente cloth weaving techniques, the model should be able to generate plausible sentences about looms, thread colors, and patterns.
+
+    Context sensitivity: Does the model change its predictions depending on small changes in the context? For example, recall the prompts “Jide was hungry so she went looking for” and “Jide was thirsty so she went looking for”. For each the model should generate different continuations.
+
+    Bias: Does the model generate texts that reinforce harmful, one-dimensional stereotypes? A limited dataset might over-represent certain themes (e.g., focusing only on rural life, specific rituals, or wildlife) and lead the model to generate very biased texts that perpetuate stereotypes. 
+
+Metrics
+
+Once you have defined the criteria along which you want to assess your model, you need methods to measure how well the model is doing along these criteria. There are several approaches, ranging from fully automated checks to in-depth human studies. A robust evaluation plan ideally combines all of them.
+Automated metrics with test sets
+
+The fastest way to get repeatable feedback is to build a small, high-quality test set. This is a curated collection of input prompts and their corresponding ideal or "golden” outputs. For example, if you are building a chatbot, your test set would contain example questions and their human-written answers.
+
+
+With this set, you can automatically compute metrics by comparing the model's output to the golden output. This approach is fast and cheap, allowing you to quickly check if a change to your model made it better or worse. However, these metrics are often superficial and cannot truly capture qualities like creativity or factual correctness.
+Abstract metrics: Is the model learning?
+
+During the training process itself, you can monitor abstract metrics to ensure the model is fundamentally learning. The most common one is the loss that you’ve encountered in previous activities.
+
+
+Watching the training loss go down is a crucial sense check. It tells you that the training process is working. However, a low loss does not guarantee a good model. A model can become excellent at predicting text patterns from its training data but still fail at being factual, coherent, or safe in real-world use. Think of it as confirmation that a student is studying, but not proof that they have actually understood the subject. 
+Human evaluation
+
+For complex criteria like helpfulness, safety, coherence, and creativity, there is often no substitute for human judgments. Human evaluation involves putting your system in front of real people and asking for their feedback. This can be done in several ways:
+
+
+    Rating scales: Users rate a model's response on a scale (e.g., 1-5) for specific criteria like "Helpfulness" or "Factual accuracy."
+
+    Side-by-side comparison: This is a very popular method. A user is given the same prompt and two different responses (e.g., from Model A and Model B) and asked to choose which one is better and why. This is excellent for measuring relative improvements.
+
+    Qualitative feedback: Users provide open-ended written feedback, explaining what they liked, what they disliked, and where the model failed. This can uncover unexpected problems or strengths.
+
+While it is the most time-consuming method, human evaluation is generally considered the best type of evaluation because it measures what ultimately matters: whether the model works well for the people who will actually use it.
+Reflect on the outputs of your SLM
+
+Think again about the outputs you generated using your small language model in the previous lab. With this additional information on how to evaluate machine learning systems, how did the model perform along relevant criteria, such as fluency, coherence, and bias? 
+
+
+The activities in the previous lab already guided you through evaluating your model along many of these axes but you may want to go back to the lab and examine your model outputs for additional prompts.
+Looking ahead
+
+In this article, you encountered some of the principles of evaluating language models and machine learning systems more generally. You learned why it is important to determine the goals of the evaluation process, and you have seen some examples of evaluation criteria and metrics. As mentioned above, evaluations can be both automatic using pre-defined test sets, or manual by asking users to evaluate your system. The latter tends to be more time consuming. However, it tends ultimately to be the most reliable source of information on whether your system is good enough to be deployed and to identify areas for improvement.
+
+
+In the next section, you will learn more about how to anticipate benefits from developing technology and you will develop your problem statement that will guide some activities through the upcoming courses.
+Research skills focus
+Evaluation
+
+Evaluation is a fundamental research skill that involves systematically assessing the quality, credibility, and significance of a researcher's own research findings and methodologies. It requires researchers to critically examine the strengths and weaknesses of their work by applying rigorous criteria and standards. Through careful evaluation of their experiments, researchers can ensure the validity and reliability of their conclusions, identify potential biases or limitations, and make informed judgments about the value and impact of their research.
+Research skills focus - This image is an illustration of the concept of research skills. It shows different people in a cartoon format interacting with different tools, such as a pencil, a laptop, a chart, and a book. The image itself appears like a blueprint or schematic you may encounter in an engineering setting.
