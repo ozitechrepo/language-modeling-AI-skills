@@ -1,0 +1,36 @@
+Machine learning development pipeline
+............................................
+The machine learning development pipeline is a systematic, multi-stage process for creating and deploying a machine learning model.
+..................................
+Whether you are building a model to assist teachers like LearnLM, or a system for predicting the properties of proteins like ProtNLM, the general process and principles you follow as a research engineer are similar [2]. This process is known as the machine learning development pipeline, and can be broken down into some key steps. The steps in this instance are exemplified as they relate to LearnLM, which is a language model. 
+
+
+    --Data--
+
+    Raw data is rarely perfect. It can be messy, biased, or in an unusable format. Preprocessing is the essential step of cleaning and preparing data for model training. This involves removing duplicates, irrelevant content like HTML tags or emojis, and correcting errors like typos. Crucially, ethical considerations come into play here. Responsible researchers often also review the data to filter out any harmful or biased text. Once the data quality is deemed high, it is formatted and then tokenized, breaking down the text into smaller units that the model can understand.
+
+    For LearnLM, a model designed for conversational learning, data is structured as dialogues. Expert teachers review this preprocessed data to ensure its quality. Building locally relevant models adds complexity, requiring techniques to handle code-switching, dialects, and low-resource languages (those with limited digital resources). Developing appropriate tokenizers and cleaning methods for these languages is paramount.
+
+    --Train--
+
+    Training a language model from scratch demands significant resources—large datasets, immense computing power, and substantial energy. Therefore, many projects leverage existing pre-trained models, like Google's Gemma family [3], as a starting point. These models already possess strong language understanding and broad general knowledge, saving considerable resources. For LearnLM, Gemini served as this foundational pre-trained model.
+
+    --Fine-tune--
+
+    While a pre-trained model knows a lot, it doesn't inherently excel at specific tasks. Fine-tuning adapts the model to a particular purpose and desired behavior. In LearnLM's case, Gemini needed to learn how to be an effective tutor.
+
+    Supervised Fine-tuning (SFT): A pre-trained model is further trained on a smaller, high-quality dataset specifically created for the target task. For LearnLM, the tutoring conversations collected earlier were used to teach the model the format, style, and core skills of teaching.
+
+    Reinforcement Learning from Human Feedback (RLHF): This stage focuses on aligning the AI's behavior with human preferences, making it more helpful and harmless. For LearnLM, RLHF ensures the tutor is patient, avoids jargon, and guides students towards their own understanding rather than simply giving answers. This teaches LearnLM how to be a good tutor.
+
+    --Evaluate--
+
+    Before an AI model can be released to users, rigorous evaluation is essential. This goes beyond just accuracy, encompassing performance, safety, fairness, and overall usefulness. Evaluation methods include testing the model on standardized questions or tasks (benchmarks) designed to probe specific capabilities and weaknesses. Developing relevant local benchmarks is a crucial area of research.
+
+    Human evaluation also plays a vital role. Real people interact with the model, rating the quality of its responses, checking for factual errors, identifying potential harms, and assessing its helpfulness. This can involve A/B testing different model versions or "red teaming", where individuals deliberately try to make the model fail. LearnLM underwent extensive evaluation with expert teachers to assess its teaching strategies and rigorous safety testing to minimize potential harm.
+
+    --Deploy--
+
+    Once the model meets predefined evaluation criteria, it can be deployed for real-world use. However, deployment isn't the end of the process. Continuous monitoring of the model's performance in the real world, along with user feedback and system logs, is crucial for identifying issues and areas for improvement. This ongoing monitoring and evaluation feeds back into the development cycle, driving further refinements and updates.
+
+    The development pipeline for LearnLM, and indeed for most AI systems, is inherently iterative. Evaluation informs further data collection and model refinement, creating a continuous cycle of improvement.
